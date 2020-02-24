@@ -7,8 +7,10 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-@Test
+
 public class SoapUI {
+
+    @Test(groups = "soapuiTests")
     public void testTestCaseRunner() throws Exception
     {
         WsdlProject project = new WsdlProject( "/Users/Naren/Desktop/Project-1-soapui-project.xml" );
@@ -16,7 +18,7 @@ public class SoapUI {
         TestCase testCase = testSuite.getTestCaseByName( "/user/login TestCase" );
 
         // create empty properties and run synchronously
-        TestRunner runner = testCase.run( new PropertiesMap(), false );
+        TestRunner runner = testCase.run( null, false );
         assertEquals( TestRunner.Status.FINISHED, runner.getStatus() );
     }
 }
